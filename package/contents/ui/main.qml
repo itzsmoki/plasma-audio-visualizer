@@ -18,6 +18,8 @@ PlasmoidItem {
     property int orientation: Plasmoid.configuration.orientation
     property bool stopCava: Plasmoid.configuration._stopCava
     property bool disableLeftClick: Plasmoid.configuration.disableLeftClick
+    property string leftClickAction: Plasmoid.configuration.leftClickAction
+    property string leftClickCommand: Plasmoid.configuration.leftClickCommand
     property real minimumDimension: Math.min(main.width, main.height)
 
     property int barGap: {
