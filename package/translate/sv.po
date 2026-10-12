@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: visualizer\n"
 "Report-Msgid-Bugs-To: https://github.com/luisbocanegra/plasma-audio-"
 "visualizer\n"
-"POT-Creation-Date: 2026-09-04 17:33+0000\n"
+"POT-Creation-Date: 2026-10-12 15:15+0000\n"
 "PO-Revision-Date: 2025-11-07 15:03+0000\n"
 "Last-Translator: Mathias Mårtensson <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -620,6 +620,30 @@ msgstr "Inaktivera vänsterklick:"
 msgid "Applet popup will still be accessible from the right click menu."
 msgstr ""
 "Applet-popupen kommer fortfarande att vara tillgänglig från högerklicksmenyn."
+
+#: ../contents/ui/configGeneral.qml
+msgid "Left click action"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Action:"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Open popup"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Run command"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Command:"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Shell command to run when left-clicking the widget."
+msgstr ""
 
 #: ../contents/ui/configGeneral.qml
 msgid "Troubleshooting"
