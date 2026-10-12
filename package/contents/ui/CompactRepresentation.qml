@@ -35,6 +35,8 @@ Item {
     property bool fillWave: Plasmoid.configuration.fillWave
     property int orientation: Plasmoid.configuration.orientation
     property bool disableLeftClick: Plasmoid.configuration.disableLeftClick
+    property string leftClickAction: Plasmoid.configuration.leftClickAction
+    property string leftClickCommand: Plasmoid.configuration.leftClickCommand
     property bool stereo: Plasmoid.configuration.outputChannels === "stereo"
     property bool waveSimulateWaveform: Plasmoid.configuration.waveSimulateWaveform
     property bool circleModeFill: Plasmoid.configuration.circleModeFill
@@ -209,15 +211,23 @@ Item {
         }
     }
 
+    RunCommand {
+        id: clickRunCommand
+    }
+
     MouseArea {
         id: mouseArea
         anchors.fill: parent
         hoverEnabled: enabled
         cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
         onClicked: {
-            main.expanded = !main.expanded;
+            if (root.leftClickAction === "command" && root.leftClickCommand !== "") {
+                clickRunCommand.run(root.leftClickCommand);
+            } else {
+                main.expanded = !main.expanded;
+            }
         }
-        enabled: !root.disableLeftClick || cava.hasError || main.expanded
+        enabled: !root.disableLeftClick || root.leftClickAction === "command" || cava.hasError || main.expanded
     }
 
     PlasmaCore.ToolTipArea {

@@ -16,6 +16,8 @@ KCM.SimpleKCM {
     property alias cfg_idleTimer: idleTimerSpinbox.value
     property alias cfg_hideToolTip: hideToolTipCheckbox.checked
     property alias cfg_disableLeftClick: disableLeftClickCheckbox.checked
+    property string cfg_leftClickAction
+    property string cfg_leftClickCommand
 
     Kirigami.FormLayout {
         id: parentLayout
@@ -93,6 +95,38 @@ KCM.SimpleKCM {
             }
             Kirigami.ContextualHelpButton {
                 toolTipText: i18n("Applet popup will still be accessible from the right click menu.")
+            }
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Left click action")
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Action:")
+            ComboBox {
+                id: leftClickActionCombo
+                model: [i18n("Open popup"), i18n("Run command")]
+                currentIndex: cfg_leftClickAction === "command" ? 1 : 0
+                onActivated: {
+                    cfg_leftClickAction = currentIndex === 1 ? "command" : "none";
+                }
+            }
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Command:")
+            visible: leftClickActionCombo.currentIndex === 1
+            TextField {
+                id: leftClickCommandField
+                Layout.minimumWidth: 350
+                placeholderText: ""
+                text: cfg_leftClickCommand
+                onTextChanged: cfg_leftClickCommand = text
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: i18n("Shell command to run when left-clicking the widget.")
             }
         }
 
